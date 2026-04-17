@@ -1,0 +1,115 @@
+:root{
+	--violet:#7c3aed; /* primary violet */
+	--orange:#fb923c; /* warm orange */
+	--bg:#fff7ed;
+	--surface:#ffffff;
+	--muted:#6b7280;
+}
+
+/* Page layout */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+	margin:0;
+	font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+	background: linear-gradient(180deg, rgba(255,247,237,1) 0%, rgba(255,252,245,1) 100%);
+	color:#0f172a;
+	-webkit-font-smoothing:antialiased;
+	-moz-osx-font-smoothing:grayscale;
+	position:relative;
+	padding:40px 20px;
+}
+
+/* Wavy background shapes using SVG data-URI */
+body::before,
+body::after{
+	content:"";
+	position:fixed;
+	left:0;
+	width:100%;
+	height:40vh;
+	pointer-events:none;
+	z-index:-1;
+	background-repeat:no-repeat;
+	background-position:center top;
+	background-size:cover;
+	opacity:0.95;
+}
+
+/* Top violet wave */
+body::before{
+	top:0;
+	background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'><path fill='%237c3aed' fill-opacity='1' d='M0,96L30,106.7C60,117,120,139,180,138.7C240,139,300,117,360,96C420,75,480,53,540,58.7C600,64,660,96,720,112C780,128,840,128,900,138.7C960,149,1020,171,1080,165.3C1140,160,1200,128,1260,112C1320,96,1380,96,1410,96L1440,96L1440,0L0,0Z'/></svg>");
+}
+
+/* Bottom orange wave (flipped) */
+body::after{
+	bottom:0;
+	top:auto;
+	transform:translateY(20%) rotate(180deg);
+	background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'><path fill='%23fb923c' fill-opacity='1' d='M0,96L30,106.7C60,117,120,139,180,138.7C240,139,300,117,360,96C420,75,480,53,540,58.7C600,64,660,96,720,112C780,128,840,128,900,138.7C960,149,1020,171,1080,165.3C1140,160,1200,128,1260,112C1320,96,1380,96,1410,96L1440,96L1440,0L0,0Z'/></svg>");
+	opacity:0.9;
+}
+
+/* Main container */
+.wrap{max-width:1100px;margin:0 auto;background:var(--surface);padding:28px;border-radius:12px;box-shadow:0 10px 30px rgba(2,6,23,0.08)}
+
+header.site-header{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:flex;align-items:center;gap:12px}
+.logo{width:44px;height:44px;border-radius:8px;background:linear-gradient(135deg,var(--violet),var(--orange));display:flex;align-items:center;justify-content:center;color:white;font-weight:700}
+.site-title{font-size:20px;font-weight:700;color:var(--violet)}
+
+/* Links as buttons: applies to most anchors for a button-like look */
+a{display:inline-block;padding:8px 12px;border-radius:8px;color:white;text-decoration:none;border:none;font-weight:600;cursor:pointer}
+a:hover{opacity:0.95;transform:translateY(-1px)}
+
+/* Base button */
+.btn{display:inline-block;padding:10px 14px;border-radius:10px;background:linear-gradient(90deg,var(--violet),var(--orange));color:white;text-decoration:none;border:none;cursor:pointer;font-weight:700;box-shadow:0 6px 18px rgba(124,58,237,0.12);transition:transform .12s ease,box-shadow .12s ease}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(124,58,237,0.14)}
+
+/* Neutral small button */
+.btn-sm{display:inline-block;padding:7px 12px;border-radius:8px;background:#fff;color:#111;border:1px solid rgba(15,23,42,0.06);text-decoration:none;font-weight:600}
+
+.box{background:linear-gradient(180deg,rgba(255,255,255,0.95),rgba(255,250,247,0.98));padding:16px;border-radius:10px;border:1px solid rgba(124,58,237,0.06)}
+
+h1{color:#000}
+h2{color:var(--violet)}
+
+/* Cards / annonces */
+.card{border-radius:10px;background:linear-gradient(180deg,#fff,#fff9f6);padding:14px;box-shadow:0 6px 18px rgba(2,6,23,0.05);border:1px solid rgba(124,58,237,0.06)}
+.card-title{font-size:18px;font-weight:700;color:#3b1f3d}
+.card-price{color:var(--orange);font-weight:700}
+
+/* Forms */
+input[type=text], input[type=email], input[type=password], textarea, select{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(15,23,42,0.08);margin:6px 0}
+label{font-weight:600;color:var(--violet)}
+
+footer{margin-top:24px;color:var(--muted);font-size:13px;text-align:center}
+
+@media (max-width:640px){
+	.wrap{padding:18px}
+	.site-title{font-size:16px}
+}
+
+/* subtle focus */
+input:focus, textarea:focus, select:focus{outline:none;box-shadow:0 0 0 4px rgba(124,58,237,0.12);border-color:var(--violet)}
+
+/* Button variants (uniform) */
+.btn-create{background:linear-gradient(90deg,var(--violet),#a78bfa);padding:10px 16px;border-radius:8px;color:#fff}
+.btn-voir{background:#fff;color:#111;border:1px solid rgba(15,23,42,0.06);padding:8px 12px;border-radius:8px}
+.btn-edit{background:linear-gradient(90deg,#60a5fa,#3b82f6);color:#fff}
+.btn-del{background:linear-gradient(90deg,#fb6b6b,#e11d48);color:#fff}
+.btn-modifier{background:linear-gradient(90deg,#60a5fa,#3b82f6);color:#fff}
+.btn-supprimer{background:linear-gradient(90deg,#fb6b6b,#e11d48);color:#fff}
+.btn-contacter{background:linear-gradient(90deg,var(--violet),var(--orange));color:#fff}
+.btn-retour{background:#f3f4f6;color:#111;padding:8px 12px;border-radius:8px}
+.actions-td a{display:inline-block}
+
+/* Grid used on favoris and listing */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px}
+.card-body{padding:12px}
+.card-desc{color:#6b7280;margin-top:8px;font-size:13px}
+
+.card-prix{color:var(--orange);font-weight:700;margin-top:8px}
+
+
